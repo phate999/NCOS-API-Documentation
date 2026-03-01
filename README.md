@@ -2,6 +2,23 @@
 
 Comprehensive NCOS (NetCloud OS) API documentation for Cradlepoint SDK application development.
 
+## Documentation Structure
+
+### API Trees
+- [status/](status/README.md) - Status API (read-only, 87 endpoints) - WAN, GPS, modem, system health
+- [config/](config/README.md) - Config API (persistent settings, 500+ paths) - WAN rules, firewall, features
+- [control/](control/README.md) - Control API (actions) - Reboot, ping, GPIO, speedtest
+- [state/](state/README.md) - State API (internal use)
+
+### Reference Files
+- [config/PATHS.md](config/PATHS.md) - Complete config path index
+- [FEATURES_TO_ENABLE.md](FEATURES_TO_ENABLE.md) - Feature flags and UUIDs
+- [config/dtd/NCOS-DTD-7.25.101.json](config/dtd/NCOS-DTD-7.25.101.json) - Full config schema
+
+### Scripts
+- **explore_status.py** - Query live router: `python3 explore_status.py status/wan/connection_state`
+- **generate_config_paths.py** - Regenerate config index: `python3 generate_config_paths.py`
+
 ## API Access Methods
 
 | Method | Use Case | Authentication |
@@ -236,28 +253,3 @@ if modem:
     # Structure varies by model - see status/modem.md
     cp.log(f'Modem data present')
 ```
-
-## Documented Trees
-
-- [status/](status/README.md) - Status API (read-only, 87 endpoints)
-- [config/](config/README.md) - Config API (persistent settings, 500+ paths)
-- [control/](control/README.md) - Control API (actions: reboot, ping, GPIO, etc.)
-- [state/](state/README.md) - State API (internal use)
-
-## Scripts
-
-**explore_status.py** – Query live router data:
-```bash
-python3 explore_status.py status/wan/connection_state
-```
-
-**generate_config_paths.py** – Regenerate config path index:
-```bash
-python3 generate_config_paths.py
-```
-
-## Reference
-
-- [config/PATHS.md](config/PATHS.md) - Full list of config paths
-- [FEATURES_TO_ENABLE.md](FEATURES_TO_ENABLE.md) - Feature flags
-- [config/dtd/NCOS-DTD-7.25.101.json](config/dtd/NCOS-DTD-7.25.101.json) - Config schema
